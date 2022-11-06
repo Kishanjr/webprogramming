@@ -1,0 +1,47 @@
+Grading Lab 1 for Kishan
+
+Correctness:
+
+Question 1:
+
+- Calling the function without any arguments breaks the code. You have not handled cases of not
+  passing in an input parameter.
+- Calling the first function with [2, 2] returns { 3: true } - which is correct.
+  (*Just a small follow-up. Figure out why.*)
+- variable 'list' is globally scoped - not initialized with let/const.
+
+Question 2:
+
+- Good, works as expected.
+
+Question 3:
+
+- final_out is not scoped and is not initialized with let/const - hence, it will run as a globally
+  scoped variable. This will break if there are no anagrams in my given input (*Why?*)
+- None of the iterator variables (variables used inside loops) are initialized with let/const. j is
+  another variable that is not initialized with let/const.
+- Duplicates are not considered. Passing [foo, foo, foo] returns { foo: [ 'foo' ] } when it should've
+  returned {}
+- Incorrect output for ["oof", "care", "foo", "acer"]. Returns: { 'foo,acer': [ 'care', 'acer' ] }
+  Expected: { foo: [oof, foo], acer: [acer, care] } (*Why?*)
+
+Question 4:
+
+- Good, works as expected.
+
+Code Quality:
+
+- Very little focus given to code quality throughout. Please focus on writing clear concise code.
+- You can install Prettier for helping you with indentation and stuff (we will go through the installation).
+  For variables, please name them according to their necessity and don't use names like 'a' and 'b'.
+- Question1::isPrime()::3 => nit, but always wrap the if and for statements with braces as it helps
+  with readability. They are supposed to run just the succeeding line if there are no braces, but in
+  a large codebase, this can easily cause unreadable code. Have it as a practice to always wrap your
+  conditional and loop statements in curly braces.
+- Question1::26 => Nit, but this is generally a bad way to iterate over an array - it is not readable.
+  There are far more, readable ways to iterate an array instead of depending on the iterator to
+  eventually go out of bounds - and become undefined. It uses a lot of JS quirks to arrive at the
+  solution (falsiness of undefined, not throwing for array out of bounds etc), which is generally not
+  the best way to code :) - Use a for / for of loop instead.
+- Question3 => Extremely convoluted code which is leading to a lot of mistakes as I've mentioned before.
+- Question4 => Again, global scoped variables without let/const popping up here and there.
